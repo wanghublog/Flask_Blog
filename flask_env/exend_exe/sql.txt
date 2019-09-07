@@ -1,0 +1,68 @@
+ <function uuid4 at 0x0000017D9C384D08> | Second Post | NULL      | NULL                | 799d0b44-5a11-4a3d-9593-45309e7d94c6 |
+| 1433223                                | test        | test utf8 | 2019-07-29 20:08:00 | 799d0b44-5a11-4a3d-9593-45309e7d94c6 |
+| 3e9dc3ee-fa23-4723-9504-4eff10f9aaf4   | First post  | NULL      | NULL                | 799d0b44-5a11-4a3d-9593-45309e7d94c6
+
+db.session.query(Post).filter_by(id='123123').all()
+User.query.filter_by(username=form.username.data).one()
+
+create database w223;                         #1.创建数据库
+use databases w223;   	#使用数据库
+create table Users(	
+	Username char(10),
+	id char(20),
+	Password char(20) );
+insert into js values ('T001','刘薇','女','1971-03-20','电信','551021197103203121');#添加数据
+
+delete                                          #删除信息
+from students
+where sname='张劲豆' ;
+
+alter table js ADD ADDR char(50); 	#增加列
+alter table sk modify column hours smallint;	#修改列属性
+alter table 表名 drop column 列名;	#删除列
+update score 
+set score = score+ 5 
+where Cno = '';	#更新数据
+
+添加主键约束：alter table 表名 add constraint 主键 （形如：PK_表名） primary key 表名(主键字段);
+添加外键约束：alter table 从表 add constraint 外键（形如：FK_从表_主表） foreign key 从表(外键字段) references 主表(主键字段);
+删除主键约束：alter table 表名 drop primary key;
+删除外键约束：alter table 表名 drop foreign key 外键（区分大小写）;
+******
+******
+
+ 
+select sname,score,cname,property
+ from students,course,score
+ where property='考试' and
+sname='江涛' and
+students.sno=score.sno and
+ score.cno=course.cno;
+
+#增加列 alter table js add adress char(10);
+#修改列字型 alter table sk modify column hours smallint;
+# 删除列  alter table 表名 drop column 列名;
+
+查看编码
+查看数据库编码。
+show variables like '%char%';
+查看表编码
+show create table <表名>;
+例：show create table user;
+
+查看字段编码
+show full columns from <表名>;
+例： show full column from user;
+
+修改编码格式
+修改数据库编码格式
+alter database <数据库名> character set utf8mb4;
+例：alter database db_user character set utf8mb4;
+修改表编码
+alter table <表名> character set utf8mb4;
+例：alter table user character set utf8mb4;
+修改字段编码
+ALTER TABLE <表名> MODIFY COLUMN <字段名> <字段类型> CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+例：ALTER TABLE comment MODIFY COLUMN content VARCHAR(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+批量修改表字段编码：
+alter table student convert to character set utf8; 

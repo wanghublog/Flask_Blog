@@ -1,0 +1,43 @@
+启动 RabbitMQ :rabbitmq-plugins enable rabbitmq_management启动管理工具 启动 ：net start/stop RabbitMQ
+celerr 单步执行：celery -A tasks worker --pool=eventlet
+#celery -A celery_runner worker --pool=solo -l info
+修改models.py文件
+roles = db.relationship(
+        'Role',
+        secondary=users_roles,
+        backref=db.backref('users', lazy='dynamic'))
+
+        # Setup the default-role for user.
+        default = Role.query.filter_by(name="default").one()
+        self.roles.append(default)
+
+def is_authenticated(self):
+        """Check the user whether logged in."""
+
+        # Check the User's instance whether Class AnonymousUserMixin's instance.
+        if isinstance(self, AnonymousUserMixin):
+            return False
+        else:
+            return True
+
+    def is_active():
+        """Check the user whether pass the activation process."""
+
+        return True
+
+    def is_anonymous(self):
+        """Check the user's login status whether is anonymous."""
+
+        if isinstance(self, AnonymousUserMixin):
+            return True
+        else:
+            return False
+
+    def get_id(self):
+        """Get the user's uuid from database."""
+
+        return unicode(self.id)
+ curl -d "title=Just Test" -d "text=Hello" -d "tags=Python" -d "token=eyJhbGciOiJIUzI1NiIsImV4cCI6MTQ4MzM1MjkwNSwiaWF0IjoxNDgzMzUyMzA1fQ.eyJpZCI6IjY1Y2I5NzkyLWI4NzYtNDllNy1iMmM1LTQ2NDY4NjI0MTk5ZSJ9.hYpczUEZUalgzutyyIViheBd_jnnCmegvp4sazHIEoA" http://localhost:5000/api/posts
+"1746b650-bcab-436b-82ab-7411e252b576"
+eyJhbGciOiJIUzI1NiIsImV4cCI6MTQ4MzM1MjkwNSwiaWF0IjoxNDgzMzUyMzA1fQ.eyJpZCI6IjY1Y2I5NzkyLWI4NzYtNDllNy1iMmM1LTQ2NDY4NjI0MTk5ZSJ9.hYpczUEZUalgzutyyIViheBd_jnnCmegvp4sazHIEoA
+eyJhbGciOiJIUzI1NiIsImV4cCI6MTQ4MzM1MjkwNSwiaWF0IjoxNDgzMzUyMzA1fQ.eyJpZCI6IjY1Y2I5NzkyLWI4NzYtNDllNy1iMmM1LTQ2NDY4NjI0MTk5ZSJ9.hYpczUEZUalgzutyyIViheBd_jnnCmegvp4sazHIEoA
